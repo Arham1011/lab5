@@ -3,7 +3,7 @@ name: Deploy to FTP
 on:
   push:
     branches:
-      - main  # Adjust branch name if needed
+      - main  # Replace with your branch name if different
 
 jobs:
   deploy:
@@ -16,10 +16,10 @@ jobs:
       - name: Deploy to FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          ftp-server: home562576484.1and1-data.host
-          ftp-username: ${{ secrets.ftp_username }}
-          ftp-password: ${{ secrets.ftp_password }}
-          method: sftp
+          server: home562576484.1and1-data.host
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
           port: 22
+          protocol: sftp
           local-dir: './'
-          remote-dir: '/site/IS436/lab5/Arham/'
+          server-dir: '/site/IS436/lab5/Arham/'
