@@ -1,20 +1,25 @@
-name: Deploy via FTP
+name: Deploy to FTP
 
 on:
   push:
     branches:
-      - main
+      - main  # Change "main" to your branch name if different
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Upload to FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
         with:
-          ftp-server: "ftp://your-ftp-server-address"
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          server: home562576484.1and1-data.host
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          local-dir: './'
+          remote-dir: '/site/IS436/lab5/Arham/'
+          port: 22
+          protocol: sftp
